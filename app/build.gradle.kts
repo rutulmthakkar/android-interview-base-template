@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
@@ -33,9 +32,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
-    }
     buildFeatures {
         compose = true
     }
@@ -50,9 +46,23 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 
     // Navigation
     implementation(libs.androidx.navigation.compose)
+
+    // Paging 3
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.androidx.paging.compose)
+
+    // DataStore
+    implementation(libs.androidx.datastore.preferences)
+
+    // WorkManager
+    implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.hilt.work)
+    ksp(libs.androidx.hilt.compiler)
 
     // Hilt
     implementation(libs.hilt.android)
